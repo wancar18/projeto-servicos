@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+<h:head>
+	<title>Lista das Serviços</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandLink value="Cadastro" action="cadastroServicos.xhtml"
+			immediate="true" />
+			
+		<h1>Lista das Serviços</h1>
+		<h:messages />
+		
+		<h:dataTable border="1" value="#{veiculoControllerWanderson.lista}" var="servico">
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Id" />
+				</f:facet>
+				<h:outputText
+					value="#{servico.id}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Cliente" />
+				</f:facet>
+				<h:outputText
+					value="#{servico.cliente}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Serviço" />
+				</f:facet>
+				<h:outputText
+					value="#{servico.servico}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Quantidade" />
+				</f:facet>
+				<h:outputText
+					value="#{servico.quantidade}" />
+			</h:column>
+
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Valor unitário" />
+				</f:facet>
+				<h:outputText
+					value="#{servico.valorUnit}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Valor total" />
+				</f:facet>
+				<h:outputText
+					value="#{servico.vlTotal}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Data do Serviço" />
+				</f:facet>
+				<h:outputText value="#{servico.dataServ}">
+					<f:convertDateTime pattern="dd/MM/yyyy"
+						timeZone="America/Sao_Paulo" />
+				</h:outputText>
+			</h:column>
+
+
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Ação" />
+				</f:facet>
+				<h:commandButton value="Editar" action="#{veiculoControllerWanderson.editar}">
+					<f:setPropertyActionListener value="#{servico}"
+						target="#{veiculoControllerWanderson.veiculoWanderson}" />
+				</h:commandButton>
+				
+				<h:commandButton value="Excluir" action="#{veiculoControllerWanderson.excluir}"
+					onclick="return confirm('Confirma a exclusão ?')">
+					<f:setPropertyActionListener value="#{servico}"
+						target="#{veiculoControllerWanderson.veiculoWanderson}" />
+				</h:commandButton>
+			</h:column>
+			
+		</h:dataTable>	
+		
+	</h:form>
+</h:body>
+</html>
